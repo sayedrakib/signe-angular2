@@ -1,22 +1,71 @@
-<!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
-  ~ This software is released under MIT license.
-  ~ The full license information can be found in LICENSE in the root directory of this project.
-  -->
-<p>This is a Clarity seed application. This is the default page that loads for the application.</p>
 
-<clr-dropdown [clrMenuPosition]="'bottom-right'">
-    <button class="btn btn-outline-primary" clrDropdownToggle>
-        Dropdown
-        <clr-icon shape="caret down"></clr-icon>
-    </button>
-    <div class="dropdown-menu">
-        <label class="dropdown-header">Dropdown header</label>
-        <a href="javascript://" clrDropdownItem>Action 1</a>
-        <a href="javascript://" clrDropdownItem>Action 2</a>
-        <a href="javascript://" class="disabled" clrDropdownItem>Disabled</a>
-        <div class="dropdown-divider"></div>
-        <a href="javascript://" clrDropdownItem>Link 1</a>
-        <a href="javascript://" clrDropdownItem>Link 2</a>
-    </div>
-</clr-dropdown>
+<form>
+  <input type="search" name="query" [(ngModel)]="query" (keyup.enter)="search()" autofocus="autofocus" placeholder="Hakusana" >
+
+  <!-- <select id="searchfield" type = selected ng-init="type='all'"> -->
+  <select name="searchfield" [(ngModel)]="p" >
+       <option value="all" >kaikki</option>
+       <option value="signum">signum</option>
+       <option value="description">kuvaus</option>
+       <option value="shelf">hyllynumero</option>
+       <option value="floor">kerros</option>
+       <option value="collection">kokoelmatunnus</option>
+  </select>
+
+  <button type="button" (click)="search()">Search</button>
+</form>
+
+<div *ngIf="searchResults">
+
+<clr-datagrid [clrDgLoading]="loading">
+    <clr-dg-column [clrDgField]="'signum'">Signum</clr-dg-column>
+    <clr-dg-column [clrDgField]="'shelfnumber'">Hylly</clr-dg-column>
+    <clr-dg-column [clrDgField]="'floor'">Krs</clr-dg-column>
+    <clr-dg-column [clrDgField]="'collectioncode'">KT</clr-dg-column>
+    <clr-dg-column [clrDgField]="'description'">Kuv/Huom</clr-dg-column>
+    <clr-dg-column [clrDgField]="'locationid'">Muokkaa</clr-dg-column>
+    <clr-dg-column [clrDgField]="'locationid'">Intra</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let item of searchResults">
+        <clr-dg-cell>{{item.signum}}</clr-dg-cell>
+        <clr-dg-cell>{{item.shelfnumber}}</clr-dg-cell>
+        <clr-dg-cell>{{item.floor}}</clr-dg-cell>
+        <clr-dg-cell>{{item.collectioncode}}</clr-dg-cell>
+        <clr-dg-cell>{{item.description}}</clr-dg-cell>
+        <clr-dg-cell><a target="_blank" href="http://kirjastokartta.kansalliskirjasto.fi/admin/editshelf.htm?&select_shelf={{item.locationid}}"><clr-icon shape="edit" class="icon-color-info"></clr-icon></a></clr-dg-cell>
+        <clr-dg-cell><a target="_blank" href="https://pforms.preview.jyu.fi/kirjasto/signe/viewSigne/{{item.locationid}}"> <clr-icon shape="pop-out" class="icon-color-info"></clr-icon> </a></clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{searchResults.length}} items</clr-dg-footer>
+</clr-datagrid>
+
+
+<p>Löytyi sijainteja: {{searchResults.length}}</p>
+<p> </p>
+<p> </p>
+
+<table >
+  <thead>
+  <tr>
+    <th>Signum</th>
+    <th>Hylly</th>
+    <th>Krs</th>
+    <th>KT</th>
+    <th>Kuv/Huom</th>
+    <th>Muokkaa</th>
+    <th>Intra</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of searchResults">
+    <td>{{item.signum}}</td>
+    <td>{{item.shelfnumber}}</td>
+    <td>{{item.floor}}</td>
+    <td>{{item.collectioncode}}</td>
+    <td>{{item.description}}</td>
+    <td> <a target="_blank" href="http://kirjastokartta.kansalliskirjasto.fi/admin/editshelf.htm?&select_shelf={{item.locationid}}"> M </a> </td>
+    <td> <a target="_blank" href="https://pforms.preview.jyu.fi/kirjasto/signe/viewSigne/{{item.locationid}}"> Muistiinpanot </a> </td>
+  </tr>
+  </tbody>
+</table>
+</div>

@@ -8,6 +8,9 @@ import { ROUTING } from "./app.routing";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 
+import { Item, SearchService } from './shared/index';
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -21,7 +24,7 @@ import { AboutComponent } from "./about/about.component";
         ClarityModule,
         ROUTING
     ],
-    providers: [],
+    providers: [SearchService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
