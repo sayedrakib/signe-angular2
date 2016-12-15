@@ -1,0 +1,13 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+  <div class="signe-container">
+  <p>Signe-hakukäyttöliittymän sijaintitietoja ylläpidetään Kansalliskirjaston <a href="http://kirjastokartta.kansalliskirjasto.fi/admin/index.htm">Kirjastokartta-työkalulla</a>. Päivitä tietokanta -painike hakee uusimmat sijaintitiedot Kansalliskirjaston palvelusta ja tekee ne haettavaksi hakukäyttöliittymässä.</p>
+
+  <button class="btn btn-default btn-xs" (click)="doUpdate()" type="button">Päivitä tietokanta</button>
+
+  <p *ngIf="timestampResponse?.status">Tietokanta päivitetty: {{timestampResponse?.timestamp | date:'d.M.y H:m'}}</p>
+
+  </div>

@@ -8,10 +8,11 @@ import { Component, OnInit  } from "@angular/core";
 import { Item, SearchService } from '../shared/index';
 
 @Component({
-    styleUrls: ['home.component.scss'],
-    templateUrl: 'home.component.html',
+    styleUrls: ['haku.component.scss'],
+    templateUrl: 'haku.component.html',
 })
-export class HomeComponent implements OnInit {
+
+export class HakuComponent implements OnInit {
 
 query: string;
 p: string = "all";
@@ -20,9 +21,7 @@ searchResults: Array<Item>;
 
 constructor(private searchService: SearchService) {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
 search(): void {
   this.searchService.searchWithQuery(this.p + "/" + this.query).subscribe(

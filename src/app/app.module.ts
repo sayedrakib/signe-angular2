@@ -5,17 +5,18 @@ import { HttpModule } from '@angular/http';
 import { ClarityModule } from 'clarity-angular';
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
-import { HomeComponent } from "./home/home.component";
-import { AboutComponent } from "./about/about.component";
+import { HakuComponent } from "./haku/haku.component";
+import { AdminComponent } from "./admin/admin.component";
 
-import { Item, SearchService } from './shared/index';
+import { Item, SearchService, Time, UpdateDBservice} from './shared/index';
+
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        AboutComponent,
-        HomeComponent
+        AdminComponent,
+        HakuComponent
     ],
     imports: [
         BrowserModule,
@@ -24,7 +25,7 @@ import { Item, SearchService } from './shared/index';
         ClarityModule,
         ROUTING
     ],
-    providers: [SearchService],
+    providers: [SearchService, UpdateDBservice],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -6,3 +6,26 @@
     background-image: url(../images/clarity_logo.svg);
   }
 }
+.signe-header {
+  background-color: #2780e3;
+  height: 40px !important;
+}
+
+.signe-branding {
+  width: 890px ; /*can be in percentage also.*/
+  height: 50px;
+  margin: 0 auto;
+  padding: 0px;
+  /*position: relative;*/
+  /*background-color: pink;*/
+}
+
+.signe-topbar{
+position:fixed;
+z-index:1;
+top:0;
+left:0;
+width:100%;
+height:60px;
+background-color:#2780e3;
+}

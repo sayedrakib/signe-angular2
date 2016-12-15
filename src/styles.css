@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.signe-container {
+  width: 890px ; /*can be in percentage also.*/
+  height: auto;
+  margin: 0 auto;
+  padding: 0px;
+  position: relative;
+  /*background-color: pink;*/
+}
