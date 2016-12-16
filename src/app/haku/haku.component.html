@@ -1,9 +1,9 @@
 <div class="signe-container">
 <form class="signe-form">
-  <input type="search" name="query" [(ngModel)]="query" (keyup.enter)="search()" autofocus="autofocus" placeholder="Hakusana" >
+  <input class="radius" type="search" name="query" [(ngModel)]="query" (keyup.enter)="search()" autofocus="autofocus" placeholder="Hakusana" >
 
   <!-- <select id="searchfield" type = selected ng-init="type='all'"> -->
-  <select name="searchfield" [(ngModel)]="p" >
+  <select class="radius" name="searchfield" [(ngModel)]="p" >
        <option value="all" >kaikki</option>
        <option value="signum">signum</option>
        <option value="description">kuvaus</option>
@@ -12,7 +12,7 @@
        <option value="collection">kokoelmatunnus</option>
   </select>
 
-  <button type="button" (click)="search()">Hae</button>
+  <button class="radius" type="button" (click)="search()">Hae</button>
 </form>
 
 <div *ngIf="searchResults" >
